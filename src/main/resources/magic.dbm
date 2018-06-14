@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<role name="magic"
+      superuser="true"
+      createdb="true"
+      createrole="true"
+      login="true"
+      password="magic"
+      sql-disabled="true">
+</role>
+
+<database name="magic" is-template="false" allow-conns="true" sql-disabled="true">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="card">
+	<schema name="public"/>
+	<role name="magic"/>
+	<position x="560" y="80"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="varchar" length="127"/>
+	</column>
+	<column name="rarity" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="image_url" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="pk_card" type="pk-constr" table="public.card">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="code_set" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="set_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="set">
+	<schema name="public"/>
+	<role name="magic"/>
+	<position x="100" y="100"/>
+	<column name="code" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="type">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="release_date">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="pk_set" type="pk-constr" table="public.set">
+		<columns names="code" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="set_has_many_card" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#747ad6"
+	 src-table="public.set"
+	 dst-table="public.card"
+	 src-required="true" dst-required="false"/>
+
+<table name="comment">
+	<schema name="public"/>
+	<role name="magic"/>
+	<position x="1060" y="100"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="type" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="value" not-null="true">
+		<type name="decimal" length="0"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="pk_comment" type="pk-constr" table="public.comment">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="card_has_many_comment" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#3a0104"
+	 src-table="public.card"
+	 dst-table="public.comment"
+	 src-required="true" dst-required="false"/>
+
+</dbmodel>

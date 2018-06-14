@@ -1,0 +1,30 @@
+info:
+  build:
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+    profile: dev
+
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO
+        web:
+          client: INFO
+      hibernate:
+        SQL: DEBUG
+    io:
+      ucandoit: DEBUG
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/magic
+    username: magic
+    password: magic
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+
+server:
+  contextPath: /magic-back
