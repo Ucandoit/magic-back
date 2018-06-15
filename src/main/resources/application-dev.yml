@@ -28,3 +28,9 @@ spring:
 
 server:
   contextPath: /magic-back
+
+magic:
+  api:
+    baseUrl: https://api.magicthegathering.io/v1/
+    endpoint:
+      sets: sets

@@ -15,10 +15,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "set")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @ToString(of = { "code" })
 @EqualsAndHashCode(of = { "code" }, callSuper = false)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CardSet {
 
 	@Id

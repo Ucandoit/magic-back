@@ -60,7 +60,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="varchar" length="50"/>
 	</column>
 	<column name="type">
-		<type name="varchar" length="10"/>
+		<type name="varchar" length="50"/>
 	</column>
 	<column name="release_date">
 		<type name="date" length="0"/>
