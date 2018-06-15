@@ -1,7 +1,5 @@
 package io.ucandoit.mtg.domain.card;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,11 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -22,44 +17,29 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
-@Table(name = "card")
+@Table(name = "comment")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-@ToString(of = { "id", "name", "rarity" })
+@ToString(of = { "id", "type", "value" })
 @EqualsAndHashCode(of = { "id" }, callSuper = false)
-public class Card {
+public class CardComment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "type")
+	private String type;
 
-	@Column(name = "rarity")
-	private String rarity;
+	@Column(name = "value")
+	private double value;
 
-	@Column(name = "image_url")
-	private String imageUrl;
+	@Column(name = "description")
+	private String description;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "code_set")
-	private CardSet cardSet;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "card")
-	private List<CardComment> comments;
-
-	@Transient
-	private String set;
-
-	public int getId() {
-		return this.id;
-	}
-
-	@JsonIgnore
-	public void setId(int id) {
-		this.id = id;
-	}
+	@JoinColumn(name = "id_card")
+	private Card card;
 
 }

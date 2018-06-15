@@ -33,6 +33,7 @@ public class CardServiceImpl implements CardService {
 			log.info("Retrieving cards of set {}, page {}", set, page);
 			List<Card> cards = mtgApiService.getCards(set, page);
 			if (cards.isEmpty()) {
+				log.info("End of retrieving cards of set {}", set, page);
 				endLoop = true;
 			} else {
 				for (Card card : cards) {

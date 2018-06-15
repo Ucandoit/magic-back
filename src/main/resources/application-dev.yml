@@ -19,6 +19,7 @@ logging:
 
 spring:
   datasource:
+#    url: jdbc:postgresql://ucandb.cogsjd1upa8j.eu-central-1.rds.amazonaws.com:5432/magic
     url: jdbc:postgresql://localhost:5432/magic
     username: magic
     password: magic
