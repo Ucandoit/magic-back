@@ -24,7 +24,7 @@ spring:
     password: magic
     driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: true
+    show-sql: false
 
 server:
   contextPath: /magic-back
@@ -34,3 +34,4 @@ magic:
     baseUrl: https://api.magicthegathering.io/v1/
     endpoint:
       sets: sets
+      cards: cards

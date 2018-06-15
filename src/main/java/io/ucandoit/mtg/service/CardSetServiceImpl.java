@@ -2,8 +2,6 @@ package io.ucandoit.mtg.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,7 @@ public class CardSetServiceImpl implements CardSetService {
 	@Autowired
 	private MtgApiService mtgApiService;
 
-	@Resource
+	@Autowired
 	private CardSetRepository cardSetRepository;
 
 	@Override

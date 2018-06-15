@@ -3,3 +3,4 @@ magic:
     baseUrl: https://api.magicthegathering.io/v1/
     endpoint:
       sets: sets
+      cards: cards
